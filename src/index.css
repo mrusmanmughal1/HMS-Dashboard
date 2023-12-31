@@ -1,12 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer components {
-    .sideList {
-        @apply flex justify-start items-center w-2/3  rounded-md font-semibold   gap-4 my-4 px-8 py-2 hover:bg-slate-100
-    }
-    .toplist {
-        @apply flex justify-center
-    }
+  .sideList {
+    @apply flex justify-start items-center w-2/3  rounded-md font-semibold   gap-4 my-4 px-8 py-2 hover:bg-slate-100;
+  }
+  .toplist {
+    @apply flex justify-center;
+  }
+  .formflex {
+    @apply flex justify-between items-center  gap-7 font-semibold px-10 m-3;
+  }
+  .cabinsFilterBtn {
+   @apply hover:bg-slate-400 hover:text-white px-2 rounded-md 
+  }
 }

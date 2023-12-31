@@ -1,10 +1,10 @@
 import React from 'react'
 import pic from '../data/load.gif'
-const Loader = () => {
+const Loader = ({width}) => {
   return (
-    <div className='flex justify-center items-center w-full py-10'>
+    <div className='flex justify-center items-center py-5 '>
 
-        <img src={pic} alt='loader' width={150} height={150}/>
+        <img src={pic} alt='loader' width={width ?? 150} height={150}/>
     </div>
   )
 }

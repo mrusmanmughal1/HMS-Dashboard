@@ -1,9 +1,49 @@
-import React from 'react'
-
+import React, { useState } from "react";
+import pic from "../data/Nyumbani_Hotel_Logo.png";
+import { useLogin } from "../Features/authentication/useLogin";
+import Loader from "../ui/Loader";
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+  const [email, setemail] = useState("mrusmanmughal1@gmail.com");
+  const [password, setpassword] = useState("12345678");
+  const { Loginuser, isLoading } = useLogin();
 
-export default Login
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !password) return null;
+    Loginuser({ email, password });
+  };
+  return (
+    <div className="bg-slate-100 h-screen py-4">
+      <div className="w-1/3 mx-auto  flex justify-center flex-col">
+        <img src={pic} alt="" width={200} className="mx-auto" />
+        <h1 className="font-bold  text-2xl text-center font-serif py-4">
+          Log in To Your Account
+        </h1>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="w-1/3  mx-auto gap-3 bg-white rounded-md p-5 flex flex-col border">
+          <p>Email</p>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
+            className="w-full border py-2 px-2"
+          />
+
+          <p>Password</p>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+            className="w-full border py-2 px-2"
+          />
+          <button className="bg-purple-950 text-white p-2 " type="submit">
+            {isLoading ? <Loader width={5} /> : "Login"}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Login;

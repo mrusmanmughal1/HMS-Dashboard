@@ -7,18 +7,17 @@ import {
   HiOutlineHomeModern,
   HiOutlineUsers,
 } from "react-icons/hi2";
+import Logo from "./SiteLogo";
+
 const Sidebar = () => {
   const [index, setindex] = useState(0);
   return (
     <div className="h-screen row-span-full ">
-      <div className="pt-12  pb-3 text-center font-semibold  ">
-        {" "}
-        <span className="text-3xl text-orange-600">HOTEL-</span>
-        <span className="text-2xl text-red-950">SYSTEM</span>
+      <div className="pt-6    ">
+      <Logo/>
       </div>
-      <hr />
       <nav>
-        <ul className="py-10 text-xl font-semibol">
+        <ul className="py-4 text-xl font-semibol">
           <li className="toplist">
             <NavLink
               to="/dashboard"

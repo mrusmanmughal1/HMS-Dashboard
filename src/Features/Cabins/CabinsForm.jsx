@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useCreateCabin } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
-const CabinsForm = ({ EditCab = {}, setshow }) => {
+const CabinsForm = ({ EditCab = {} ,onclose }) => {
   const { id: cabid, ...editcabin } = EditCab;
   //create
   const { isCreating, createcabin } = useCreateCabin();
@@ -20,8 +20,7 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
         { newcabin: cabin, id: cabid },
         {
           onSuccess: (data) => {
-            reset();
-            setshow(false)
+            onclose()
           },
         }
       );
@@ -33,7 +32,7 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
         },
         {
           onSuccess: (data) => {
-            reset();
+            onclose()
           },
         }
       );
@@ -44,10 +43,10 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
   };
   return (
     <div className="bg-white text-black py-10 ">
-      <div className="w-1/2  ">
+      <div className="  ">
         <form onSubmit={handleSubmit(onsubmit, onError)}>
           {" "}
-          <div className="flex justify-between items-center font-semibold px-10 m-3">
+          <div className="formflex">
             <p>Cabin Name</p>
             <div>
               <input
@@ -63,7 +62,7 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
               )}
             </div>
           </div>
-          <div className="flex justify-between items-center font-semibold px-10 m-3">
+          <div className="formflex">
             <p>Max Capacity</p>
             <div>
               <input
@@ -82,7 +81,7 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
               )}
             </div>
           </div>
-          <div className="flex justify-between items-center font-semibold px-10 m-3">
+          <div className="formflex">
             <p>Regular Price</p>
             <div>
               <input
@@ -99,7 +98,7 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
               )}
             </div>
           </div>
-          <div className="flex justify-between items-center font-semibold px-10 m-3">
+          <div className="formflex">
             <p>Discount</p>
             <div>
               <input
@@ -117,7 +116,7 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
               )}
             </div>
           </div>
-          <div className="flex justify-between items-center font-semibold px-10 m-3">
+          <div className="formflex">
             <p>Description</p>
             <div>
               <input
@@ -132,7 +131,7 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
               )}
             </div>
           </div>
-          <div className="flex justify-between items-center font-semibold px-10 m-3">
+          <div className="formflex">
             <p>Cabin Photo</p>
             <div>
               <input
@@ -148,9 +147,8 @@ const CabinsForm = ({ EditCab = {}, setshow }) => {
             </div>
           </div>
           <div className="flex justify-end gap-3">
-            <button className="px-3 py-2 border rounded-md">Cancel</button>
             <button
-              className="px-3 py-2 bg-green-500 rounded-md"
+              className="px-3 py-2 bg-green-500 rounded-md text-white font-semibold" 
               disabled={isCreating || isEditing}
             >
               {edit ? "Edit Cabin" : "Add Cabin"}
