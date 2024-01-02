@@ -1,4 +1,4 @@
-import CabinTable from "../ui/CabinTable";
+import CabinTable from "../Features/Cabins/CabinTable";
 import Addcabin from "../Features/Cabins/Addcabin";
 import CabinTableOperations from "../Features/Cabins/CabinTableOperations";
 
@@ -10,8 +10,6 @@ const Cabins = () => {
           <p className="text-4xl">All Cabins </p>
           <CabinTableOperations />
         </div>
-        
-        
 
         <CabinTable />
         <Addcabin />

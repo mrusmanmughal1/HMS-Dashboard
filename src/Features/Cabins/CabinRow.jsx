@@ -1,9 +1,9 @@
 import { MdDeleteSweep } from "react-icons/md";
-import CabinsForm from "../Features/Cabins/CabinsForm";
+import CabinsForm from "./CabinsForm";
 import { FaEdit } from "react-icons/fa";
-import Model from "./Model";
-import ConfirmDelete from "./ConfirmDelete";
-import { useDeleteCabin } from "../Features/Cabins/useDeleteCabin";
+import Model from "../../ui/Model";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import { useDeleteCabin } from "./useDeleteCabin";
 const CabinRow = ({ data }) => {
   const { isLoading, deleteCabinApi } = useDeleteCabin();
 

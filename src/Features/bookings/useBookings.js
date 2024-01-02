@@ -7,12 +7,12 @@ export const useBookings = () => {
   const queryClient = useQueryClient();
   const [seachparam] = useSearchParams();
 
-  const filterValue = seachparam?.get("status");
+  const filterValue = seachparam?.get("discount");
   //filter
   const filters =
     !filterValue || filterValue === "All"
       ? null
-      : { field: "status", value: filterValue };
+      : { field: "discount", value: filterValue };
 
   //pagination
   const page = !seachparam.get("page") ? 1 : Number(seachparam.get("page"));

@@ -7,7 +7,6 @@ const Pagination = ({ count }) => {
     ? 1
     : Number(seachparam.get("page"));
   const PageCount = Math.ceil(count / PAGE_SIZE);
-  console.log(PageCount);
   const next = () => {
     const next = currentPage === PageCount ? currentPage : currentPage + 1;
     seachparam.set("page", next);

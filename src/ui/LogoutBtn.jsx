@@ -4,7 +4,6 @@ import MiniLoader from "./MiniLoader";
 import { useLogoutuser } from "../Features/authentication/useLogoutuser";
 const LogoutBtn = () => {
   const { mutate, isLoading } = useLogoutuser();
-  console.log(isLoading, mutate);
 
   if (isLoading) return <MiniLoader />;
   return (

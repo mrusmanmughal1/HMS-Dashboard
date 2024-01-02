@@ -6,7 +6,6 @@ import { CgProfile } from "react-icons/cg";
 import { formatDistanceFromNow, subtractDates } from "../../helpers/helper";
 import { useCheckIn } from "./useCheckin";
 const BookingDetailsBox = ({ booking }) => {
-  console.log(booking, "lolo");
   const {
     id,
     created_at,

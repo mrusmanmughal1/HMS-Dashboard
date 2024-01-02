@@ -1,12 +1,21 @@
-import Loader from "./Loader";
+import Loader from "../../ui/Loader";
 import CabinRow from "./CabinRow";
-import { useCabins } from "../Features/Cabins/useCabins";
-import { useParams, useSearchParams } from "react-router-dom";
-import Table from "./Table";
+import { useCabins } from "./useCabins";
+import {  useSearchParams } from "react-router-dom";
+import Table from "../../ui/Table";
+import Pagination from "../../ui/Pagination";
+import { useQuery } from "@tanstack/react-query";
+import { totalCabins } from "../../services/apiCabins";
 const CabinTable = () => {
-  const { cabinsData, isloading } = useCabins();
-  //filter
   const [seachparam] = useSearchParams();
+
+
+  const {data } = useQuery({
+    queryKey:['total'],
+    queryFn:totalCabins
+  })
+  const { cabinsData, isloading  } = useCabins();
+  //filter
   let filterby = seachparam.get("discount") || "All";
 
   let filteredCabs;
@@ -40,6 +49,10 @@ const CabinTable = () => {
       {sorted?.map((cabin, id) => {
         return <CabinRow key={id} data={cabin} />;
       })}
+      <Table.Footer>
+
+      <Pagination count={data?.length} />
+      </Table.Footer>
     </div>
   );
 };

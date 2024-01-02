@@ -13,7 +13,6 @@ const ProtectedRoute = ({ children }) => {
     navigate("/login");
   }
 
-  console.log(isLoading, "loading");
   // 3. while loading , show a spinner
   if (isLoading) return <Loader />;
   // 4.if authentic then show app

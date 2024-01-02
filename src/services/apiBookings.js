@@ -1,7 +1,8 @@
+import { getToday } from "../helpers/helper";
 import { PAGE_SIZE } from "../utils/GlobalConstants";
 import supabase from "./supabase";
 
-export const getBookings = async ({ filters, sortBy, page }) => {
+export const getBookings = async ({ filters, page }) => {
   let query = supabase
     .from("bookings")
     .select(
@@ -28,7 +29,6 @@ export const getBooking = async (id) => {
     .select("* ,cabins(name),guests(fullName,email,nationalID)", {
       count: "exact",
     })
-    // .select("*,cabins(*),guest(*)")
     .eq("id", id);
 
   if (error) {
@@ -45,7 +45,7 @@ export const getUpdateCheckin = async (id, obj) => {
     .select()
     .single();
   if (error) {
-    console.log(error);
+    throw new Error(error);
   }
   return data;
 };
@@ -58,5 +58,51 @@ export const getDeleteBooking = async (id) => {
     console.error(error);
     throw new Error("Booking could not be deleted");
   }
+  return data;
+};
+
+// get the booking according to the Date
+
+export const getBookingbyDate = async (date) => {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*")
+    .gte("created_at", date)
+    .lte("created_at", getToday({ end: true }));
+  if (error) {
+    console.error(error);
+    throw new Error("Booking");
+  }
+  return data;
+};
+//get stays
+export const getStaysAfterDate = async (date) => {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*,guests(fullName)")
+    .gte("startDate", date)
+    .lte("startDate", getToday());
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be deleted");
+  }
+  return data;
+};
+
+//Today activity
+
+export const getTodayActivity = async () => {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*,guests(fullName)")
+    .or(
+      `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.check-in,endDate.eq.${getToday()})`
+    )
+    .order("created_at");
+
+    if (error) {
+      console.error(error);
+      throw new Error("Booking could not be deleted");
+    }
   return data;
 };

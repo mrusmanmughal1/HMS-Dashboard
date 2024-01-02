@@ -8,8 +8,6 @@ import Loader from "../../ui/Loader";
 
 const BookingsTable = () => {
   const { Bookings, count, isLoading } = useBookings();
-  const a = useBookings();
-  console.log(a);
   if (!Bookings) {
     <Empty tableName="Bookings" />;
   }

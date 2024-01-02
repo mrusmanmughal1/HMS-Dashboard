@@ -13,7 +13,6 @@ const CabinsForm = ({ EditCab = {} ,onclose }) => {
     defaultValues: edit ? EditCab : {},
   });
   const { errors } = formState;
-  console.log(errors);
   const onsubmit = (cabin) => {
     if (edit) {
       editCB(

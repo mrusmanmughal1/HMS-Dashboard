@@ -17,7 +17,6 @@ const BookingsDetails = () => {
   const { deleteBooking, loading } = useDeleteBookings();
 
   if (isLoading) return <Loader />;
-  console.log(data);
 
   const { status, id } = data[0];
 

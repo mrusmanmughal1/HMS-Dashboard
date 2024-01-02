@@ -39,14 +39,13 @@ const App = () => {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="bookings" element={<Bookings />} />
               <Route path="bookings/:bookingID" element={<Booking />} exact />
-
               <Route path="cabins" element={<Cabins />} />
               <Route path="users" element={<Users />} />
               <Route path="settings" element={<Settings />} />
               <Route path="account" element={<Accounts />} />
               <Route path="bookings/check-in/:id" element={<Checkin />} />
             </Route>
-            <Route path="login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

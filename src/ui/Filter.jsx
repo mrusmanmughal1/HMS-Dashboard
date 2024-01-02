@@ -8,10 +8,9 @@ const Filter = ({ fieldName, options }) => {
     if(seachparam.get("page")){
       seachparam.set("page" , 1)
     }
-
     setsearchparam(seachparam);
   };
-  const paramValue = seachparam.get(fieldName) || "All";
+  const paramValue = seachparam.get(fieldName) || options.at(0).value;
 
   return (
     <div className="bg-white py-2 rounded-md flex px-4  gap-3 ">

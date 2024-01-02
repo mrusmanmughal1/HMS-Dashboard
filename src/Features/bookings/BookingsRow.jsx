@@ -1,8 +1,5 @@
-import { MdDelete, MdEdit } from "react-icons/md";
-import CabinsForm from "../Cabins/CabinsForm";
+import {   FaEdit } from "react-icons/fa";
 import { BiShowAlt } from "react-icons/bi";
-import Model from "../../ui/Model";
-import Deletecabin from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
 import { useNavigate } from "react-router-dom";
 const BookingsRow = ({ booking, view }) => {
@@ -24,14 +21,14 @@ const BookingsRow = ({ booking, view }) => {
     status === "unconfirmed" ? "bg-blue-400 " : "bg-green-400";
   return (
     <Table.Row>
-      <ul class="flex  items-center  p-4 bg-slate-100 ">
-        <li className="w-32 font-semibold">{cabinName}</li>
-        <li className=" w-56    ">
+      <ul className="flex justify-normal items-center  p-4 bg-slate-100 ">
+        <li className=" w-52  font-semibold">{cabinName}</li>
+        <li className="   w-52  ">
           <p className="font-semibold">{GuestName}</p>
           <p>{email}</p>
         </li>
-        <li className="w-44">{startDate}</li>
-        <li className="w-48 flex">
+        <li className=" w-64">{startDate}</li>
+        <li className="w-56 flex">
           <p
             className={` ${bookingStatus}  text-white rounded-md  px-2   font-semibold`}
           >
@@ -42,12 +39,12 @@ const BookingsRow = ({ booking, view }) => {
         <li className="text-gray-600   flex   items-center">
           {view && (
             <BiShowAlt
-              className="hover:text-gray-400 "
+              className="hover:text-gray-400 mx-1 "
               onClick={() => navigate(`/bookings/${booking.id}`)}
             />
           )}
           {status === "unconfirmed" ? (
-            <MdEdit
+            <FaEdit
               className="hover:text-gray-400"
               onClick={() => navigate(`/bookings/check-in/${booking.id}`)}
             />
